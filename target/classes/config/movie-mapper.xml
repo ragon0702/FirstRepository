@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.MovieMapper">
+	<resultMap type="dto.MovieDTO" id="movie">
+		<id column="bno" property="bno"/>
+		<result column="title" property="title"/>
+		<result column="open_date" property="openDate"/>
+		<result column="audience_count" property="audienceCount"/>
+		<result column="director" property="director"/>
+	</resultMap>
+  	<insert id="insertMovie" parameterType="dto.MovieDTO">
+  		insert into movie
+  		values(movie_no.nextval, #{title}, #{openDate},#{audienceCount},#{director})
+  	</insert>
+  	<insert id="insertTestMovie" parameterType="dto.MovieDTO">
+  		insert into movie
+  		values(#{bno}, #{title}, #{openDate},#{audienceCount},#{director})
+  	</insert>
+  	
+  	<select id="selectAllMovie" resultMap="movie">
+  		select * from movie	
+  	</select>
+</mapper>
